@@ -19,7 +19,7 @@ var songSchema = mongoose.Schema({
     }
 });
 
-var Song = module.exports = mongoose.model('Song', songSchema);
+var Song = module.exports = mongoose.model('Song', songSchema, 'songs');
 
 module.exports.getSongs = function(callback, limit){
     Song.find(callback).limit(limit);

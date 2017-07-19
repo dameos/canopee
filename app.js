@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 Song = require('./models/song');
+User = require('./models/user');
 
 mongoose.connect('mongodb://localhost/canopee');
 var db = mongoose.connection; 
@@ -18,6 +19,15 @@ app.get('/api/songs', function(req, res){
             throw err;
         }
         res.json(songs);
+    });
+});
+
+app.get('/api/users', function(req, res){
+    Song.getUsers(function(err, users){
+        if(err) {
+            throw err;
+        }
+        res.json(users);
     });
 });
 
