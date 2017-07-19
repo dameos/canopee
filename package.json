@@ -1,7 +1,7 @@
 {
   "name": "canopee",
   "version": "1.0.0",
-  "description": "Simple music app",
+  "description": "Simple music app :V",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
