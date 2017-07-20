@@ -1,5 +1,3 @@
-config = {
-    database: 'mongodb://localhost/canopee'
+module.exports = {
+    database: 'mongodb://localhost:27017/canopee',
 }
-
-module.exports = config;

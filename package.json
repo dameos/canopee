@@ -9,7 +9,11 @@
   "dependencies":{
      "express":"*",
      "body-parser":"*",
-     "mongoose":"*"
+     "mongoose":"*",
+     "cors":"*",
+     "jsonwebtoken":"*",
+     "passport":"*",
+     "passport-jwt":"*"
   },
   "author": "David Medina",
   "license": "ISC"

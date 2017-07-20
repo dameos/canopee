@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 
 
 router.get('/getAllUsers', (req, res) => {
@@ -11,13 +12,16 @@ router.get('/getAllUsers', (req, res) => {
     });
 });
 
+
+
 router.post('/register', (req, res) => {
     var user = req.body;
     User.addUser(user, (err, user) => {
         if(err){
-            throw err;
+            res.json({success: false, msg: 'Error on register user'});
+        } else {
+            res.json({success: true, msg: 'User registered'});
         }
-        res.json(user)
     });
 });
 

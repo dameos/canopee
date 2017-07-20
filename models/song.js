@@ -1,6 +1,6 @@
-var mongoose =  require('mongoose');
+const mongoose =  require('mongoose');
 
-var songSchema = mongoose.Schema({
+const songSchema = mongoose.Schema({
     songName:{
         type: String,
         required: true
@@ -18,6 +18,7 @@ var songSchema = mongoose.Schema({
     },
     songAudioUrl:{
         type: String,
+        unique: true
     },
     create_date:{
         type: Date,
@@ -30,6 +31,11 @@ module.exports = Song;
 
 module.exports.getSongs = (callback, limit) => {
     Song.find(callback).limit(limit);
+}
+
+module.exports.getSongByName = (songName, callback) => {
+    const query = {songName: songName};
+    Song.findOne(query, callback);
 }
 
 module.exports.addSong = (song, callback) => {
