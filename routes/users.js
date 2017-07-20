@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 router.get('/getAllUsers', (req, res) => {
     User.getUsers((err, users) => {
         if(err) {
