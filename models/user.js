@@ -37,15 +37,11 @@ module.exports.getUsers = (callback, limit) => {
     User.find(callback).limit(limit);
 }
 
-module.exports.getUser = (username, callback) => {
+module.exports.getUserByUsername = (username, callback) => {
     const query = {username: username};
     User.findOne(query,callback);
 }
 
 module.exports.addUser = (user, callback) => {
     User.create(user, callback);
-}
-
-module.exports.logIn = (user, callback) => {
-    User.find(user.username, callback);
 }

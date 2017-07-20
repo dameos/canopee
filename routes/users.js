@@ -26,15 +26,20 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    var user = req.body;
-    User.logIn(user, (err, userR) => {
+    const username = req.body.username;
+    const password = req.body.password
+    User.getUserByUsername(username, (err, userR) => {
         if(err) {
             throw err;
         }
-        if(user.password == userR[0].password) {
-            res.send('Acces granted');
-        } else {
-            res.send('Wrong password');
+        if(!user) {
+            return res.json({success: false, msg: 'User not found'});
+        } else {
+            if(password == userR.password) {
+                res.json({success: true, msg: 'Acces granted'});
+            } else {
+                return res.json({success: false, msg: 'Wrong password'});
+            }   
         }
     });
 });

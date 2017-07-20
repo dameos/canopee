@@ -31,6 +31,8 @@ app.get('/', (req, res) => {
 });
 
 app.use(cors());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser.json());
 app.use('/users', users);
 app.use('/songs', songs);
