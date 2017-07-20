@@ -21,4 +21,18 @@ router.post('/register', (req, res) => {
     });
 });
 
+router.post('/login', (req, res) => {
+    var user = req.body;
+    User.logIn(user, (err, userR) => {
+        if(err) {
+            throw err;
+        }
+        if(user.password == userR[0].password) {
+            res.send('Acces granted');
+        } else {
+            res.send('Wrong password');
+        }
+    });
+});
+
 module.exports = router;

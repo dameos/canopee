@@ -27,3 +27,7 @@ module.exports.getUsers = (callback, limit) => {
 module.exports.addUser = (user, callback) => {
     Song.create(user, callback);
 }
+
+module.exports.logIn = (user, callback) => {
+    User.find(user.username, callback);
+}
