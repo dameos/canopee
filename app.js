@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const config = require('./config/database');
 
 Song = require('./models/song');
 User = require('./models/user');
@@ -10,7 +11,7 @@ User = require('./models/user');
 const users = require('./routes/users');
 const songs = require('./routes/songs');
 
-mongoose.connect('mongodb://localhost/canopee');
+mongoose.connect(config.database);
 var db = mongoose.connection; 
 
 app.get('/', (req, res) => {
