@@ -13,14 +13,22 @@ var songSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    songImageUrl:{
+        type: String,
+    },
     create_date:{
         type: Date,
         default: Date.now
     }
 });
 
-var Song = module.exports = mongoose.model('Song', songSchema, 'songs');
+var Song = mongoose.model('Song', songSchema, 'songs');
+module.exports = Song;
 
-module.exports.getSongs = function(callback, limit){
+module.exports.getSongs = (callback, limit) => {
     Song.find(callback).limit(limit);
+}
+
+module.exports.addSong = (song, callback) => {
+    Song.create(song, callback);
 }

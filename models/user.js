@@ -20,6 +20,10 @@ var User = mongoose.model('User', userSchema, 'users');
 
 module.exports = User;
 
-module.exports.getUsers = function (callback, limit) {
+module.exports.getUsers = (callback, limit) => {
     User.find(callback).limit(limit);
+}
+
+module.exports.addUser = (user, callback) => {
+    Song.create(user, callback);
 }

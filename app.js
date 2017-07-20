@@ -1,7 +1,9 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+app.use(bodyParser.json());
 
 Song = require('./models/song');
 User = require('./models/user');
@@ -9,25 +11,45 @@ User = require('./models/user');
 mongoose.connect('mongodb://localhost/canopee');
 var db = mongoose.connection; 
 
-app.get('/', function(req, res) {
-    res.send('hello World');
+app.get('/', (req, res) => {
+    res.send('Use API');
 });
 
-app.get('/api/songs', function(req, res){
-    Song.getSongs(function(err, songs){
+app.get('/api/songs', (req, res) => {
+    Song.getSongs((err, songs) => {
         if(err) {
-            throw err;
+            console.log(err);
         }
         res.json(songs);
     });
 });
 
-app.get('/api/users', function(req, res){
-    Song.getUsers(function(err, users){
+app.post('/api/songs', (req, res) => {
+    var song = req.body;
+    Song.addSong(song, (err, song) => {
+        if(err){
+            throw err;
+        }
+        res.json(song);
+    });
+});
+
+app.get('/api/users', (req, res) => {
+    User.getUsers((err, users) => {
         if(err) {
             throw err;
         }
         res.json(users);
+    });
+});
+
+app.post('/api/users', (req, res) => {
+    var user = req.body;
+    User.addUser(user, (err, user) => {
+        if(err){
+            throw err;
+        }
+        res.json(user)
     });
 });
 
