@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <% include partials/head %>
+    </head>
+    <title>Canopee</title>
+    <body class="container">
+        <header>
+            <% include partials/header %>
+        </header>
+        <form action="/songs/addSong" method="POST">
+            <p>
+                <label>Song Name:</label>
+                <input type="text" name="songName">
+            </p>
+            <p>
+                <label>Song Author:</label>
+                <input type="text" name="songAuthor">
+            </p>
+            <p>
+                <label>Song Duration</label>
+                <input type="text" name="songDuration">
+            </p>
+            <p>
+                <label>Song Image</label>
+                <input type="text" name="songImageUrl">
+            </p>
+            <p>
+                <input type="submit" value="OK">
+            </p>
+        </form>
+        <footer> 
+            <% include partials/footer %>
+        </footer>
+    </body>
+</html> 

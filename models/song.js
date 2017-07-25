@@ -16,10 +16,6 @@ const songSchema = mongoose.Schema({
     songImageUrl:{
         type: String,
     },
-    songAudioUrl:{
-        type: String,
-        unique: true
-    },
     create_date:{
         type: Date,
         default: Date.now

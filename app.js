@@ -3,9 +3,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const passport = require('passport');
 const config = require('./config/database');
 
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 mongoose.connect(config.database);
 var db = mongoose.connection; 
 
@@ -17,7 +21,7 @@ mongoose.connection.on('error', (err) => {
     console.log('Database error' + err);
 });
 
-const app = express();
+app.set('view engine', 'ejs');
 
 Song = require('./models/song');
 User = require('./models/user');
@@ -27,13 +31,11 @@ const songs = require('./routes/songs');
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.get('/', (req, res) => {
-    res.send('Invaid url');
+    res.render('addSong');
 });
 
+
 app.use(cors());
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(bodyParser.json());
 app.use('/users', users);
 app.use('/songs', songs);
 
