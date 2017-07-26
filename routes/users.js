@@ -17,9 +17,13 @@ router.post('/register', (req, res) => {
         if (err) {
             res.json({ success: false, msg: 'Error on register user' });
         } else {
-            res.json({ success: true, msg: 'User registered' });
+            res.redirect('login');
         }
     });
+});
+
+router.get('/register', (req, res) => {
+    res.render('register');
 });
 
 router.post('/login', (req, res) => {
@@ -29,16 +33,20 @@ router.post('/login', (req, res) => {
         if (err) {
             throw err;
         }
-        if (!user) {
+        if (!userR) {
             return res.json({ success: false, msg: 'User not found' });
         } else {
             if (password == userR.password) {
-                res.json({ success: true, msg: 'Acces granted' });
+                res.render('addSong', { success: true, msg: 'Acces granted' });
             } else {
                 return res.json({ success: false, msg: 'Wrong password' });
             }
         }
     });
+});
+
+router.get('/login', (req, res) => {
+    res.render('login');
 });
 
 module.exports = router;

@@ -31,8 +31,9 @@ const songs = require('./routes/songs');
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.get('/', (req, res) => {
-    res.render('addSong');
+    res.render('login');
 });
+
 
 
 app.use(cors());
