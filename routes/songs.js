@@ -4,7 +4,7 @@ const router = express.Router();
 router.get('/allSongs', (req, res) => {
     Song.getSongs((err, songs) => {
         if(err) {
-            console.log(err);
+            throw err;
         } else {
             res.render('songs', {songs:songs});
         }        
@@ -18,12 +18,25 @@ router.post('/addSong', (req, res) => {
         songDuration: req.body.songDuration,
         songImageUrl: req.body.songImageUrl
     };
-    console.log(song);
     Song.addSong(song, (err, song) => {
         if(err){
             throw err;
         }
-        res.redirect('/');
+        res.render('addSong');
+    });
+});
+
+router.get('/addSong', (req, res) => {
+    res.render('addSong');
+});
+
+router.post('/getSongByName', (req, res) => {
+    Song.getSongByName(req.body.songName, (err, songs) =>{
+        if(err){
+            throw err;
+        } else {
+            res.render('songs', {songs:songs});
+        }
     });
 });
 

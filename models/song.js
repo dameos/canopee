@@ -31,7 +31,7 @@ module.exports.getSongs = (callback, limit) => {
 
 module.exports.getSongByName = (songName, callback) => {
     const query = {songName: songName};
-    Song.findOne(query, callback);
+    Song.find(query, callback);
 }
 
 module.exports.addSong = (song, callback) => {

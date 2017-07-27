@@ -9,9 +9,12 @@
         </div>
 
         <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
             <li><a href="/songs/allSongs">Songs</a></li>
-            <li><a href="/">AddSong</a></li>
+            <li><a href="/songs/addSong">AddSong</a></li>
         </ul>
+        <form  action="/songs/getSongByName" method="POST" class="navbar-form navbar-right">
+            <input type="text" name="songName" class="form-control" placeholder="Search">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
     </div>
 </nav>
