@@ -1,20 +1,16 @@
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-
+<nav class="navbar navbar-default navbar-fixed-top" >
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
                     Canopee
             </a>
         </div>
-
         <ul class="nav navbar-nav">
             <li><a href="/songs/allSongs">Songs</a></li>
             <li><a href="/songs/addSong">AddSong</a></li>
         </ul>
-        <form  action="/songs/getSongByName" method="POST" class="navbar-form navbar-right">
+        <form  action="/songs/getSongByName" method="GET" class="navbar-form navbar-right">
             <input type="text" name="songName" class="form-control" placeholder="Search">
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-    </div>
 </nav>

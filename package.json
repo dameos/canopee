@@ -11,7 +11,8 @@
      "body-parser":"*",
      "mongoose":"*",
      "cors":"*",
-     "ejs":"*"
+     "ejs":"*",
+     "node-localstorage":"*"
   },
   "author": "David Medina",
   "license": "ISC"

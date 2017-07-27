@@ -3,11 +3,12 @@ const router = express.Router();
 
 router.get('/allSongs', (req, res) => {
     Song.getSongs((err, songs) => {
-        if(err) {
+        if (err) {
             throw err;
         } else {
-            res.render('songs', {songs:songs});
-        }        
+            console.log(localStorage.getItem('holi'));
+            res.render('songs', { songs: songs });
+        }
     });
 });
 

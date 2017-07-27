@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 router.get('/getAllUsers', (req, res) => {
     User.getUsers((err, users) => {
         if (err) {
@@ -34,10 +33,18 @@ router.post('/login', (req, res) => {
             throw err;
         }
         if (!userR) {
-            return res.json({ success: false, msg: 'User not found' });
+            return res.render('loginError');
         } else {
+            var a = userR._id;
+            localStorage.setItem('holi', a);
             if (password == userR.password) {
-                res.render('addSong', { success: true, msg: 'Acces granted' });
+                Song.getSongs((err, songs) => {
+                    if (err) {
+                        throw err;
+                    } else {
+                        res.render('songs', { songs: songs });
+                    }
+                });
             } else {
                 return res.json({ success: false, msg: 'Wrong password' });
             }
