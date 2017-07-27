@@ -16,10 +16,12 @@
                             <h1>List of Songs</h1>
                                 <ul>
                                     <% songs.forEach(function(song) { %>
-                                        <li>
-                                        <img src= <%= song.songImageUrl %> alt='' height="150" width="150">
-                                        <%= song.songName %> - <%= song.songAuthor %> - <%= song.songDuration %> 
-                                        </li>
+                                        <div class="thumbnail">
+                                            <li> 
+                                             <img src= <%= song.songImageUrl %> alt='' height="150" width="150">
+                                                <%= song.songName %> - <%= song.songAuthor %> - <%= song.songDuration %> 
+                                            </li>
+                                        </div>
                                     <% }); %>
                                 </ul>
                         </div>
