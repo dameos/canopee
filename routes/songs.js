@@ -1,4 +1,5 @@
 const express = require('express');
+const store = require('store');
 const router = express.Router();
 
 router.get('/allSongs', (req, res) => {
@@ -6,7 +7,7 @@ router.get('/allSongs', (req, res) => {
         if (err) {
             throw err;
         } else {
-            console.log(localStorage.getItem('holi'));
+            console.log(store.get('holi').name);
             res.render('songs', { songs: songs });
         }
     });

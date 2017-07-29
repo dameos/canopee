@@ -1,4 +1,5 @@
 const express = require('express');
+const store = require('store');
 const router = express.Router();
 
 router.get('/getAllUsers', (req, res) => {
@@ -36,7 +37,7 @@ router.post('/login', (req, res) => {
             return res.render('loginError');
         } else {
             var a = userR._id;
-            localStorage.setItem('holi', a);
+            store.set('holi', {name: a});
             if (password == userR.password) {
                 Song.getSongs((err, songs) => {
                     if (err) {

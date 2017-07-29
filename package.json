@@ -12,7 +12,7 @@
      "mongoose":"*",
      "cors":"*",
      "ejs":"*",
-     "node-localstorage":"*"
+     "store":"*"
   },
   "author": "David Medina",
   "license": "ISC"
