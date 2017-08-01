@@ -16,6 +16,10 @@ const songSchema = mongoose.Schema({
     songImageUrl:{
         type: String,
     },
+    songOwner:{
+        type: String,
+        required: true
+    },
     create_date:{
         type: Date,
         default: Date.now
@@ -31,6 +35,11 @@ module.exports.getSongs = (callback, limit) => {
 
 module.exports.getSongByName = (songName, callback) => {
     const query = {songName: songName};
+    Song.find(query, callback);
+}
+
+module.exports.getSongByOwner = (songOwner, callback) => {
+    const query = {songOwner: songOwner};
     Song.find(query, callback);
 }
 

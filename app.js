@@ -26,18 +26,19 @@ Song = require('./models/song');
 User = require('./models/user');
 const users = require('./routes/users');
 const songs = require('./routes/songs');
+app.use('/users', users);
+app.use('/songs', songs);
+
 
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.get('/', (req, res) => {
-    res.render('login');
+    res.redirect('songs/allSongs');
 });
 
 
 
 app.use(cors());
-app.use('/users', users);
-app.use('/songs', songs);
 
 app.listen(3000);
 console.log('Running on port 3000');

@@ -36,14 +36,14 @@ router.post('/login', (req, res) => {
         if (!userR) {
             return res.render('loginError');
         } else {
-            var a = userR._id;
-            store.set('holi', {name: a});
+            var userRID = userR._id;
+            store.set('userID', {userID: userRID});
             if (password == userR.password) {
                 Song.getSongs((err, songs) => {
                     if (err) {
                         throw err;
                     } else {
-                        res.render('songs', { songs: songs });
+                        res.render('songs', { songs: songs, title: 'Songs' });
                     }
                 });
             } else {

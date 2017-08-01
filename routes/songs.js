@@ -7,18 +7,19 @@ router.get('/allSongs', (req, res) => {
         if (err) {
             throw err;
         } else {
-            console.log(store.get('holi').name);
-            res.render('songs', { songs: songs });
+            res.render('songs', {title:'Songs', songs: songs });
         }
     });
 });
 
 router.post('/addSong', (req, res) => {
+    var userID = store.get('userID').userID;
     var song = {
         songName: req.body.songName,
         songAuthor: req.body.songAuthor,
         songDuration: req.body.songDuration,
-        songImageUrl: req.body.songImageUrl
+        songImageUrl: req.body.songImageUrl,
+        songOwner: userID
     };
     Song.addSong(song, (err, song) => {
         if(err){
@@ -34,13 +35,23 @@ router.get('/addSong', (req, res) => {
 
 router.post('/getSongByName', (req, res) => {
     Song.getSongByName(req.body.songName, (err, songs) =>{
-        if(err){
+        if(err) {
             throw err;
         } else {
-            res.render('songs', {songs:songs});
+            res.render('songs', {title: 'Songs', songs: songs });
         }
     });
 });
 
+router.get('/mySongs', (req, res) => {
+    var userID = store.get('userID').userID;
+    Song.getSongByOwner(userID, (err, songs) => {
+        if(err) {
+            throw err; 
+        } else {
+            res.render('songs', {title: 'My songs', songs: songs});
+        }
+    });
+});
 
 module.exports = router;
