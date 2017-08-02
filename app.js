@@ -42,5 +42,6 @@ app.get('/', (req, res) => {
 
 app.use(cors());
 
-app.listen(port);
-console.log('Running on port 3000');
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
