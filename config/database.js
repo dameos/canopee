@@ -1,9 +1,9 @@
 if(process.env.NODE_ENV == 'production') {
-    let config = {
+    config = {
         database: 'mongodb://dameos:Ajiaco312@ds023510.mlab.com:23510/canopee'
     }
 } else {
-    let config = {
+    config = {
         database: 'mongodb://localhost:27017/canopee'
     }
 }
