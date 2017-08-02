@@ -6,6 +6,7 @@ const cors = require('cors');
 const config = require('./config/database');
 
 const app = express();
+var port = process.env.PORT || 3000
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,5 +42,5 @@ app.get('/', (req, res) => {
 
 app.use(cors());
 
-app.listen(3000);
+app.listen(port);
 console.log('Running on port 3000');
