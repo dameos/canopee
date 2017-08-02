@@ -33,6 +33,7 @@ app.use('/songs', songs);
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.get('/', (req, res) => {
+    res.locals.loggedIn = false; 
     res.redirect('songs/allSongs');
 });
 

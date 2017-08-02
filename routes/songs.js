@@ -5,6 +5,7 @@ const router = express.Router();
 router.get('/allSongs', (req, res) => {
     Song.getSongs((err, songs) => {
         if (err) {
+            res.render('error', {err: err});
             throw err;
         } else {
             res.render('songs', {title:'Songs', songs: songs });
@@ -22,7 +23,8 @@ router.post('/addSong', (req, res) => {
         songOwner: userID
     };
     Song.addSong(song, (err, song) => {
-        if(err){
+        if(err) {
+            res.render('error', {err: err});
             throw err;
         }
         res.render('addSong');
@@ -36,6 +38,7 @@ router.get('/addSong', (req, res) => {
 router.post('/getSongByName', (req, res) => {
     Song.getSongByName(req.body.songName, (err, songs) =>{
         if(err) {
+            res.render('error', {err: err});
             throw err;
         } else {
             res.render('songs', {title: 'Songs', songs: songs });
@@ -44,14 +47,19 @@ router.post('/getSongByName', (req, res) => {
 });
 
 router.get('/mySongs', (req, res) => {
-    var userID = store.get('userID').userID;
-    Song.getSongByOwner(userID, (err, songs) => {
-        if(err) {
-            throw err; 
-        } else {
-            res.render('songs', {title: 'My songs', songs: songs});
-        }
-    });
+    try {
+        var userID = store.get('userID').userID;
+        Song.getSongByOwner(userID, (error, songs) => {
+            if (error) {
+                res.render('error', { err: error });
+                //throw err; 
+            } else {
+                res.render('mySongs', { title: 'My songs', songs: songs });
+            }
+        });
+    } catch (err) {
+        res.render('error', {err: 'BRING IT ON BITCH'});
+    }
 });
 
 module.exports = router;

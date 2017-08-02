@@ -36,6 +36,7 @@ router.post('/login', (req, res) => {
         if (!userR) {
             return res.render('loginError');
         } else {
+            res.locals.loggedIn = true;
             var userRID = userR._id;
             store.set('userID', {userID: userRID});
             if (password == userR.password) {
