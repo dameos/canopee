@@ -5,14 +5,14 @@
                     Canopee
             </a>
         </div>
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" id="test">
             <li><a href="/songs/allSongs">Songs</a></li>
-            <li><a href="/songs/addSong" id="test">AddSong</a></li>
-            <li><a style="display:block" href="/songs/mySongs" >My Songs</a></li>
+            <li><a href="/songs/addSong" >AddSong</a></li>
+            <li><a href="/songs/mySongs">My Songs</a></li>
         </ul>
         <form  action="/songs/getSongByName" method="GET" class="navbar-form navbar-right">
             <a href="/users/login" class="btn btn-primary">Log in</a>
             <input type="text" name="songName" class="form-control" placeholder="Search">
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default" id="test">Submit</button>
         </form>
 </nav>

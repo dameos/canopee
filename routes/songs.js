@@ -32,7 +32,12 @@ router.post('/addSong', (req, res) => {
 });
 
 router.get('/addSong', (req, res) => {
-    res.render('addSong');
+    try {
+        var userID = store.get('userID').userID;
+        res.render('addSong');
+    } catch (err) {
+        res.render('error', {err: 'Please log in to add song'});
+    }
 });
 
 router.post('/getSongByName', (req, res) => {
@@ -58,7 +63,7 @@ router.get('/mySongs', (req, res) => {
             }
         });
     } catch (err) {
-        res.render('error', {err: 'BRING IT ON BITCH'});
+        res.render('error', {err: 'Please login to see your songs'});
     }
 });
 
