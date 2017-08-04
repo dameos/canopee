@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <% include partials/head %>
+    </head>
+    <title>Canopee</title>
+    <body class="container">
+        <header>
+            <% include partials/header %>
+        </header>
+        <ul> 
+            <li> <label>Username</label>
+                <%= user.username %>
+            </li>
+            <li>
+                <label>Email</label>
+                <%= user.email %>
+            </li>
+            <li> 
+                <label>Password</label>
+                <%= user.password %>
+            </li>
+        </ul>
+        <footer> 
+            <% include partials/footer %>
+        </footer>
+    </body>
+</html> 

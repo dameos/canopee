@@ -42,6 +42,15 @@ module.exports.getUserByUsername = (username, callback) => {
     User.findOne(query,callback);
 }
 
+module.exports.getUserById = (id, callback) => {
+    const query = {_id:id};
+    User.findOne(query, callback); 
+}
+
+module.exports.updateUser = (id, user, callback) => {
+    User.findOneAndUpdate({_id:id}, user, {new: true});
+}
+
 module.exports.addUser = (user, callback) => {
     User.create(user, callback);
 }

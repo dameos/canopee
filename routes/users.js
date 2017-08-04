@@ -58,4 +58,19 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/profile', (req, res) => {
+    try {
+        var userID = store.get('userID').userID;
+        User.getUserById(userID, (err, user) =>{
+            if(err) {
+                throw err;
+            } else {
+                res.render('profile', { user: user});
+            }
+        });
+    } catch (err) {
+        res.render('error', {err: 'Please login to see your profile'});
+    }
+});
+
 module.exports = router;
