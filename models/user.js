@@ -48,9 +48,16 @@ module.exports.getUserById = (id, callback) => {
 }
 
 module.exports.updateUser = (id, user, callback) => {
-    User.findOneAndUpdate({_id:id}, user, {new: true});
+    const queryUser = {user: user};
+    const query = {_id:id};
+    User.update(query, queryUser, {new: true});
 }
 
 module.exports.addUser = (user, callback) => {
     User.create(user, callback);
+}
+
+module.exports.deleteUser = (id, callback) => {
+    const query = {_id: id};
+    User.deleteOne(query, callback);
 }

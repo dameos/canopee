@@ -73,4 +73,58 @@ router.get('/profile', (req, res) => {
     }
 });
 
+router.get('/deleteUser', (req, res) => {
+    try {
+        var userID = store.get('userID').userID;
+        User.deleteUser(userID, (err, result) => {
+            if(err) {
+                throw err;
+            } else {
+                console.log(result);
+                userID = null;
+                Song.getSongs((err, songs) => {
+                    if (err) {
+                        res.render('error', { err: err });
+                        throw err;
+                    } else {
+                        res.render('songs', { title: 'Songs', songs: songs });
+                    }
+    });
+            }
+        });
+    } catch (err) {
+        res.render('error', {err: 'There was an error, good luck trying to solve it'});
+    }
+});
+
+router.get('/updateUser', (req, res) => {
+    res.render('updateUser');
+});
+
+router.post('/updateUser', (req, res) => {
+    try {
+        var userID = store.get('userID').userID;
+        var user = req.body;
+        User.getUserById(userID, (err, result) => {
+            if(err) {
+                throw err;
+            } else {
+                result.username = user.username || result.username;
+                result.password = user.password || result.username;
+                result.email    = user.email    || result.email;
+                result.save((err, result) => {
+                    if(err) {
+                        throw err;
+                    } else {
+                        res.render('profile', {user: result});
+                    }
+                });
+            }
+        })
+    } catch (err) {
+        res.render('error', {err: 'There was an error'});
+    }
+    
+});
+
 module.exports = router;

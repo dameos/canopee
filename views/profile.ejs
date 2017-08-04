@@ -20,7 +20,13 @@
                 <%= user.password %>
             </li>
         </ul>
-        <footer> 
+        <form action="/users/updateUser" method="GET">
+            <button type="submit" class="btn btn-info">Edit</button>
+        </form>
+        <form action="/users/deleteUser" method="GET">
+            <button type="submit" class="btn btn-danger">Del</button>
+        </form>
+        <footer>
             <% include partials/footer %>
         </footer>
     </body>
