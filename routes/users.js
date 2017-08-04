@@ -65,7 +65,11 @@ router.get('/profile', (req, res) => {
             if(err) {
                 throw err;
             } else {
-                res.render('profile', { user: user});
+                if(user) {
+                    res.render('profile', { user: user});
+                } else {
+                    res.render('error', {err: 'Please login to see your profile'});
+                }
             }
         });
     } catch (err) {
@@ -103,8 +107,8 @@ router.get('/updateUser', (req, res) => {
 
 router.post('/updateUser', (req, res) => {
     try {
-        var userID = store.get('userID').userID;
-        var user = req.body;
+        const userID = store.get('userID').userID;
+        const user = req.body;
         User.getUserById(userID, (err, result) => {
             if(err) {
                 throw err;

@@ -20,10 +20,11 @@
                                             <li> 
                                              <img src= <%= song.songImageUrl %> alt='' height="150" width="150">
                                                 <%= song.songName %> - <%= song.songAuthor %> - <%= song.songDuration %>
-                                                <form action="/songs/deleteSong" method="GET">
+                                                <form action="/songs/deleteSong" method="POST">
+                                                    <input type="text" name="songID" value="<%= song._id %>" style="display:none"/><br><br>
                                                     <button type="submit" class="btn btn-danger">Del</button>
                                                 </form>
-                                                 <form action="/songs/editSong" method="GET">
+                                                 <form action="/songs/editSong/<%= song._id %>" method="GET">
                                                     <button type="submit" class="btn btn-info">Edit</button>
                                                 </form>
                                             </li>

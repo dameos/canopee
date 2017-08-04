@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <% include partials/head %>
+    </head>
+    <title>Canopee</title>
+    <body class="container">
+        <header>
+            <% include partials/header %>
+        </header>
+        <div class="container" style="width: 40%;">
+        <form  class="form-horizontal" action="/songs/editSong/<%= id %>" method="POST" >
+            <fieldset>
+                <div class="form-group">
+                     <label for="inputSongName" class="col-lg-4 control-label">Song Name</label>
+                     <div class="col-lg-8">
+                            <input type="text" class="form-control" name="songName" placeholder="Song Name">
+                     </div>
+                </div>
+                 <div class="form-group">
+                 <label for="inputAuthorName" class="col-lg-4 control-label">Song Author</label>
+                     <div class="col-lg-8">
+                            <input type="text" class="form-control" name="songAuthor" placeholder="Song Author">
+                     </div>
+                </div>
+                <div class="form-group">
+                     <label for="inputSongDuration" class="col-lg-4 control-label">Song Duration</label>
+                     <div class="col-lg-8">
+                            <input type="text" class="form-control" name="songDuration" placeholder="Song Duration">
+                     </div>
+                </div>
+                <div class="form-group">
+                     <label for="" class="col-lg-4 control-label">Song Image URL</label>
+                     <div class="col-lg-8">
+                            <input type="text" class="form-control" name="songImageUrl" placeholder="Song Image URL">
+                     </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Send Song</button>
+                    </div>
+                </div>
+                </fieldset>
+            </form>
+        </div>
+        <footer> 
+            <% include partials/footer %>
+        </footer>
+    </body>
+</html> 

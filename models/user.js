@@ -43,14 +43,8 @@ module.exports.getUserByUsername = (username, callback) => {
 }
 
 module.exports.getUserById = (id, callback) => {
-    const query = {_id:id};
+    const query = {_id: id};
     User.findOne(query, callback); 
-}
-
-module.exports.updateUser = (id, user, callback) => {
-    const queryUser = {user: user};
-    const query = {_id:id};
-    User.update(query, queryUser, {new: true});
 }
 
 module.exports.addUser = (user, callback) => {

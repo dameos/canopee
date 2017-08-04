@@ -59,12 +59,74 @@ router.get('/mySongs', (req, res) => {
                 res.render('error', { err: error });
                 //throw err; 
             } else {
-                res.render('mySongs', { title: 'My songs', songs: songs });
+                res.render('mySongs', { title: 'My songs', songs: songs});
             }
         });
     } catch (err) {
         res.render('error', {err: 'Please login to see your songs'});
     }
 });
+
+router.post('/deleteSong', (req, res) => {
+    console.log(req.body.songID)
+    Song.deleteSong(req.body.songID, (err, result) => {
+        if(err) {
+            throw err;
+        } else {
+            try {
+                var userID = store.get('userID').userID;
+                Song.getSongByOwner(userID, (error, songs) => {
+                    if (error) {
+                        res.render('error', { err: error });
+                        //throw err; 
+                    } else {
+                        res.render('mySongs', { title: 'My songs', songs: songs });
+                    }
+                });
+            } catch (err) {
+                res.render('error', { err: 'Please login to see your songs' });
+            }
+        }
+    })
+});
+
+router.get('/editSong/:id', (req, res) => {
+    const id = req.params.id;
+    res.render('editSong', {id:id});
+});
+
+router.post('/editSong/:id', (req, res) => {
+    const songID = req.params.id;
+    const song = req.body;
+    Song.getSongById(songID, (err, result) => {
+        if(err) {
+            throw err;
+        } else {
+            result.songName     = song.songName     || result.songName;
+            result.songAuthor    = song.songAuthor   || result.songAuthor;
+            result.songDuration = song.songDuration || result.songDuration;
+            result.songImageUrl = song.songImageUrl || result.songImageUrl;
+            result.save((err, result) => {
+                if(err) {
+                    throw err;
+                } else {
+                    try {
+                        var userID = store.get('userID').userID;
+                        Song.getSongByOwner(userID, (error, songs) => {
+                            if (error) {
+                                res.render('error', { err: error });
+                                //throw err; 
+                            } else {
+                                res.render('mySongs', { title: 'My songs', songs: songs });
+                            }
+                        });
+                    } catch (err) {
+                        res.render('error', { err: 'Please login to see your songs' });
+                    }
+                }
+            }) 
+        }
+    })
+})
 
 module.exports = router;

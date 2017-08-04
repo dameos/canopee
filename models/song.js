@@ -38,6 +38,11 @@ module.exports.getSongByName = (songName, callback) => {
     Song.find(query, callback);
 }
 
+module.exports.getSongById = (id, callback) => {
+    const query = {_id: id};
+    Song.findOne(query, callback);
+}
+
 module.exports.getSongByOwner = (songOwner, callback) => {
     const query = {songOwner: songOwner};
     Song.find(query, callback);
@@ -45,4 +50,9 @@ module.exports.getSongByOwner = (songOwner, callback) => {
 
 module.exports.addSong = (song, callback) => {
     Song.create(song, callback);
+}
+
+module.exports.deleteSong = (id, callback) => {
+    const query = {_id: id};
+    Song.deleteOne(query, callback);
 }
