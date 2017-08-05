@@ -26,8 +26,16 @@ router.post('/addSong', (req, res) => {
         if(err) {
             res.render('error', {err: err});
             throw err;
+        } else {
+            Song.getSongs((err, songs) => {
+                if (err) {
+                    res.render('error', { err: err });
+                    throw err;
+                } else {
+                    res.render('songs', { title: 'Songs', songs: songs });
+                }
+            });
         }
-        res.render('addSong');
     });
 });
 
@@ -67,9 +75,9 @@ router.get('/mySongs', (req, res) => {
     }
 });
 
-router.post('/deleteSong', (req, res) => {
-    console.log(req.body.songID)
-    Song.deleteSong(req.body.songID, (err, result) => {
+router.get('/deleteSong/:id', (req, res) => {
+    const id = req.params.id
+    Song.deleteSong(id, (err, result) => {
         if(err) {
             throw err;
         } else {
@@ -103,7 +111,7 @@ router.post('/editSong/:id', (req, res) => {
             throw err;
         } else {
             result.songName     = song.songName     || result.songName;
-            result.songAuthor    = song.songAuthor   || result.songAuthor;
+            result.songAuthor   = song.songAuthor   || result.songAuthor;
             result.songDuration = song.songDuration || result.songDuration;
             result.songImageUrl = song.songImageUrl || result.songImageUrl;
             result.save((err, result) => {
