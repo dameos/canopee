@@ -14,13 +14,18 @@ router.get('/allSongs', (req, res) => {
 });
 
 router.post('/addSong', (req, res) => {
-    var userID = store.get('userID').userID;
+    const userID = store.get('userID').userID;
+    var songPrivacy = false;
+    if(req.body.songPrivacy == 'Private') {
+        songPrivacy = true;
+    }
     var song = {
         songName: req.body.songName,
         songAuthor: req.body.songAuthor,
         songDuration: req.body.songDuration,
         songImageUrl: req.body.songImageUrl,
-        songOwner: userID
+        songOwner: userID,
+        songPrivate: songPrivacy
     };
     Song.addSong(song, (err, song) => {
         if(err) {
