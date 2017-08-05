@@ -18,11 +18,41 @@ Aplicación web para el manejo de canciones(soundCloud).
 
 ## 2.2 Definición de tecnología de desarrollo y ejecución de la aplicación:
 * Lenguaje de programación: Javascript 
-* Framework web backend: NodeJS - Express
+* Framework web backend: NodeJS 6.11.1 - Express * 
 * Framework web frontend: Template HTML(ejs)
 * Base de datos: MongoDB
 * Web app server: NodeJS
 * Web server: NGINX
+
+## 2.3 Ambientes de Desarrollo, Pruebas y Producción
+  
+  ### 2.3.1 Desarrollo:
+  * Sistema Operativo: macOS Sierra
+  * Lenguaje de Programación: Javascript
+  * Framework web backend: NodeJS 6.11.1 - Express *
+  * Framework web frontend: Template HTML(ejs)
+  * Base de datos: MongoDB
+  * Web app server: NodeJS
+  * Web server: NGINX
+
+  ### 2.3.2 Pruebas: 
+  * Sistema Operativo: Linux Centos 7.1
+  * Lenguaje de Programación: Javascript
+  * Framework web backend: NodeJS 6.11.1 - Express *
+  * Framework web frontend: Template HTML(ejs)
+  * Base de datos: MongoDB
+  * Web app server: NodeJS
+  * Web server: NGINXs
+  * Link: 10.131.137.221
+
+  ### 2.3.3 Producción: 
+  * Proveedor web: Heroku
+  * Proveedor database: mLab
+  * Lenguaje de Programación: Javascript
+  * Framework web backend: NodeJS 6.11.1 - Express *
+  * Framework web frontend: Template HTML(ejs)
+  * Base de datos: MongoDB
+  * Web app server: NodeJS
 
 # 3. Diseño: 
 
