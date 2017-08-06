@@ -1,42 +1,41 @@
-<html>
-    <head>
-        <% include partials/head %>
-    </head>
+<head>
+    <% include partials/head %>
+</head>
 
-    <title>Canopee</title>
-    <body class="container">
-        <header>
-            <%include partials/header %>
-        </header>
-        <form action="/users/login" method="POST" class="form-horizontal">
-            <fieldset>
-                <div class="form-group">
-                    <label for="inputEmail" class="col-lg-1 control-label">Username</label>
-                    <div class="col-lg-4">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
-                    </div>
+<title>Canopee</title>
+
+<body class="container">
+    <header>
+        <%include partials/header %>
+    </header>
+    <form action="/users/login" method="POST" class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-1 control-label">Username</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" name="username" placeholder="Username">
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="col-lg-1 control-label">Password</label>
-                    <div class="col-lg-4">
-                        <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-4 col-lg-offset-1">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
-                </div>
-        </form>
-            <form action="/users/register" method="GET">
-                <button type="sumbit" class="btn btn-default">Register</button>
-            </form>
-            <div class="alert alert-dismissible alert-danger">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Oh snap!</strong> <a href="#" class="alert-link">Username or password wrong</a>  try submitting again.
             </div>
-        <footer>
-            <% include partials/footer %>
-        </footer>
-    </body>
-</html> 
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-1 control-label">Password</label>
+                <div class="col-lg-4">
+                    <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-4 col-lg-offset-1">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+    </form>
+    <form action="/users/register" method="GET">
+        <button type="sumbit" class="btn btn-default">Register</button>
+    </form>
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oh snap!</strong> <a href="#" class="alert-link">Username or password wrong</a> try submitting again.
+    </div>
+</body>
+<footer>
+    <% include partials/footer %>
+</footer>

@@ -1,39 +1,45 @@
-<html> 
-    <head> 
-        <% include partials/head %>
-    </head>
-    <title>Song</title>
-    <body>
-        <div class="container">
-            <header>
-                <%include partials/header %>
-            </header>
+<head>
+    <% include partials/head %>
+</head>
+<title>Song</title>
 
-            <main>
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="jumbotron">
-                            <h1><%= title %></h1>
-                                <ul>
-                                    <% songs.forEach(function(song) { %>
-                                        <div class="thumbnail">
-                                            <li> 
-                                             <img src= <%= song.songImageUrl %> alt='' height="150" width="150">
-                                                <%= song.songName %> - <%= song.songAuthor %> - <%= song.songDuration %>
-                                                <form action="/songs/deleteSong/<%= song._id %>" method="GET">
-                                                    <button type="submit" class="btn btn-danger">Del</button>
-                                                </form>
-                                                 <form action="/songs/editSong/<%= song._id %>" method="GET">
-                                                    <button type="submit" class="btn btn-info">Edit</button>
-                                                </form>
-                                            </li>
-                                        </div>
-                                    <% }); %>
-                                </ul>
-                        </div>
+<body>
+    <div class="container">
+        <header>
+            <%include partials/header %>
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="jumbotron">
+                        <h1>
+                            <%= title %>
+                        </h1>
+                        <ul>
+                            <% songs.forEach(function(song) { %>
+                                <div class="thumbnail">
+                                    <li>
+                                        <img src=< %=s ong.songImageUrl %> alt='' height="150" width="150">
+                                        <%= song.songName %> -
+                                            <%= song.songAuthor %> -
+                                                <%= song.songDuration %>
+                                                    <form action="/songs/deleteSong/<%= song._id %>" method="GET">
+                                                        <button type="submit" class="btn btn-danger">Del</button>
+                                                    </form>
+                                                    <form action="/songs/editSong/<%= song._id %>" method="GET">
+                                                        <button type="submit" class="btn btn-info">Edit</button>
+                                                    </form>
+                                    </li>
+                                </div>
+                                <% }); %>
+                        </ul>
                     </div>
                 </div>
-            </main>
-        </div>
-    </body>
-</html>
+            </div>
+        </main>
+    </div>
+</body>
+<footer>
+    <% include partials/footer %>
+</footer>

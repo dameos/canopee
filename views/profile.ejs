@@ -1,33 +1,32 @@
-<html>
-    <head>
-        <% include partials/head %>
-    </head>
-    <title>Canopee</title>
-    <body class="container">
-        <header>
-            <% include partials/header %>
-        </header>
-        <ul> 
-            <li> <label>Username</label>
-                <%= user.username %>
-            </li>
-            <li>
-                <label>Email</label>
-                <%= user.email %>
-            </li>
-            <li> 
-                <label>Password</label>
-                <%= user.password %>
-            </li>
-        </ul>
-        <form action="/users/updateUser" method="GET">
-            <button type="submit" class="btn btn-info">Edit</button>
-        </form>
-        <form action="/users/deleteUser" method="GET">
-            <button type="submit" class="btn btn-danger">Del</button>
-        </form>
-        <footer>
-            <% include partials/footer %>
-        </footer>
-    </body>
-</html> 
+<head>
+    <% include partials/head %>
+</head>
+<title>Canopee</title>
+
+<body class="container">
+    <header>
+        <% include partials/header %>
+    </header>
+    <ul>
+        <li> <label>Username</label>
+            <%= user.username %>
+        </li>
+        <li>
+            <label>Email</label>
+            <%= user.email %>
+        </li>
+        <li>
+            <label>Password</label>
+            <%= user.password %>
+        </li>
+    </ul>
+    <form action="/users/updateUser" method="GET">
+        <button type="submit" class="btn btn-info">Edit</button>
+    </form>
+    <form action="/users/deleteUser" method="GET">
+        <button type="submit" class="btn btn-danger">Del</button>
+    </form>
+</body>
+<footer>
+    <% include partials/footer %>
+</footer>
